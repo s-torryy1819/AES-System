@@ -1,37 +1,25 @@
 package com.example.demo.Models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "position")
 public class Position {
 
-	private Integer Id;
-	private String Description;
+	@Id
+	private Integer positionId;
+	private String description;
+
+	@OneToMany(mappedBy = "position")
+	private List<Employee> employees = new ArrayList<>();
 
 	public Position() {
-	}
-
-	public Integer getId() {
-		return Id;
-	}
-
-	public Position(Integer id, String description) {
-		Id = id;
-		Description = description;
-	}
-
-	public String getDescription() {
-		return Description;
-	}
-
-	public void setDescription(String description) {
-		Description = description;
-	}
-
-	public void setId(Integer Id) {
-		this.Id = Id;
 	}
 
 }
