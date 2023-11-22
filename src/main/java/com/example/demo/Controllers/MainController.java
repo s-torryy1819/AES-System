@@ -48,6 +48,8 @@ public class MainController {
 
         Department department = new Department("Egons department", "Is just perfect here :)", 42);
         employee.setDepartment(department);
+        department.setDirector(employee);
+        employee.setDirectorOfDepartment(department);
         Position position = new Position("Big boss");
         employee.setPosition(position);
         Card card = new Card(false, null);
