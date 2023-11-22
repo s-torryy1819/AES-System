@@ -34,7 +34,7 @@ public class MonthlyExpectedWorkingHours {
 		this.monthlyExpectedWorkingHourseId = monthlyExpectedWorkingHourseId;
 	}
 
-	public Integer getMonthlyExpectedWorkingHourseId() {
+	public Integer getMonthlyExpectedWorkingHoursId() {
 		return monthlyExpectedWorkingHourseId;
 	}
 

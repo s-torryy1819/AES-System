@@ -77,4 +77,12 @@ public class Mentoring {
         this.mentee = mentee;
     }
 
+    public Integer getMentoringId() {
+        return mentoringId;
+    }
+
+    public void setMentoringId(Integer mentoringId) {
+        this.mentoringId = mentoringId;
+    }
+
 }

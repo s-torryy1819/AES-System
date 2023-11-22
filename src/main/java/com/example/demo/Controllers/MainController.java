@@ -46,16 +46,17 @@ public class MainController {
 
         Employee employee = new Employee("Mr Egon", "Sachse", null, null, null, null, null, null);
 
-        Department department = new Department("Egons department", "Is just perfect here :)", 42);
+        Department department = new Department("Mashine producement",
+                "The creation or manufacture for sale of goods and services with exchange value", 42);
         employee.setDepartment(department);
         department.setDirector(employee);
         employee.setDirectorOfDepartment(department);
-        Position position = new Position("Big boss");
+        Position position = new Position("SEO");
         employee.setPosition(position);
         Card card = new Card(false, null);
         employee.setCard(card);
 
-        Mentoring mentor = new Mentoring("Sleeping", 12, 40, employee, null);
+        Mentoring mentor = new Mentoring("Automotive Engineer", 12, 40, employee, null);
         employee.setMentor(mentor);
 
         Schedule schedule = new Schedule(null, null, employee);
