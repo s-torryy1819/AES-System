@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -32,6 +33,9 @@ public class Employee {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "card_id", referencedColumnName = "cardId")
 	private Card card;
+
+	@OneToOne(mappedBy = "director")
+	private Department directorOfDepartment;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "mentoring_mentor_id", referencedColumnName = "mentoringId")
@@ -130,6 +134,14 @@ public class Employee {
 
 	public void setScheduledList(Schedule scheduledList) {
 		this.scheduledList = scheduledList;
+	}
+
+	public Department getDirectorOfDepartment() {
+		return directorOfDepartment;
+	}
+
+	public void setDirectorOfDepartment(Department directorOfDepartment) {
+		this.directorOfDepartment = directorOfDepartment;
 	}
 
 }

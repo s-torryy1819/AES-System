@@ -4,11 +4,14 @@ package com.example.demo.Models;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -19,7 +22,11 @@ public class Department {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer departmentId;
 	private String name;
-	// private Employee Director;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "employeeId", referencedColumnName = "employeeId")
+	private Employee director;
+
 	private String description;
 	private Integer numOfEmployees;
 
@@ -73,6 +80,14 @@ public class Department {
 
 	public void setEmployees(List<Employee> employees) {
 		this.employees = employees;
+	}
+
+	public Employee getDirector() {
+		return director;
+	}
+
+	public void setDirector(Employee director) {
+		this.director = director;
 	}
 
 }
