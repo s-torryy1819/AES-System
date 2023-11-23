@@ -1,4 +1,4 @@
-package com.example.demo.Repositories;
+package com.example.demo.repositories;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -6,8 +6,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.example.demo.Models.Card;
-import com.example.demo.Models.Employee;
+import com.example.demo.DTO.Card;
+import com.example.demo.DTO.Employee;
+import com.example.demo.repositories.CardRepo;
+import com.example.demo.repositories.EmployeeRepo;
 
 @SpringBootTest
 public class CardRepoTest {

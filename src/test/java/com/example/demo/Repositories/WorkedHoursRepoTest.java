@@ -1,4 +1,4 @@
-package com.example.demo.Repositories;
+package com.example.demo.repositories;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -6,10 +6,14 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.example.demo.Models.Employee;
-import com.example.demo.Models.MonthlyExpectedWorkingHours;
-import com.example.demo.Models.Schedule;
-import com.example.demo.Models.WorkedHours;
+import com.example.demo.DTO.Employee;
+import com.example.demo.DTO.MonthlyExpectedWorkingHours;
+import com.example.demo.DTO.Schedule;
+import com.example.demo.DTO.WorkedHours;
+import com.example.demo.repositories.EmployeeRepo;
+import com.example.demo.repositories.ExpectedHoursRepo;
+import com.example.demo.repositories.ScheduleRepo;
+import com.example.demo.repositories.WorkedHoursRepo;
 
 @SpringBootTest
 public class WorkedHoursRepoTest {
