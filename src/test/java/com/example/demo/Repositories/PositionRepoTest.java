@@ -8,8 +8,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.example.demo.DTO.Employee;
 import com.example.demo.DTO.Position;
-import com.example.demo.repositories.EmployeeRepo;
-import com.example.demo.repositories.PositionRepo;
 
 @SpringBootTest
 public class PositionRepoTest {

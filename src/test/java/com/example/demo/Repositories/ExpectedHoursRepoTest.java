@@ -10,10 +10,6 @@ import com.example.demo.DTO.Employee;
 import com.example.demo.DTO.MonthlyExpectedWorkingHours;
 import com.example.demo.DTO.Schedule;
 import com.example.demo.DTO.WorkedHours;
-import com.example.demo.repositories.EmployeeRepo;
-import com.example.demo.repositories.ExpectedHoursRepo;
-import com.example.demo.repositories.ScheduleRepo;
-import com.example.demo.repositories.WorkedHoursRepo;
 
 @SpringBootTest
 public class ExpectedHoursRepoTest {
