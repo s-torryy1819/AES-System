@@ -1,25 +1,26 @@
-package com.example.demo.Controllers;
+package com.example.demo.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.Models.Card;
-import com.example.demo.Models.Department;
-import com.example.demo.Models.Employee;
-import com.example.demo.Models.Mentoring;
-import com.example.demo.Models.MonthlyExpectedWorkingHours;
-import com.example.demo.Models.Position;
-import com.example.demo.Models.Schedule;
-import com.example.demo.Models.WorkedHours;
-import com.example.demo.Repositories.CardRepo;
-import com.example.demo.Repositories.DepartmentRepo;
-import com.example.demo.Repositories.EmployeeRepo;
-import com.example.demo.Repositories.ExpectedHoursRepo;
-import com.example.demo.Repositories.MentoringRepo;
-import com.example.demo.Repositories.PositionRepo;
-import com.example.demo.Repositories.ScheduleRepo;
-import com.example.demo.Repositories.WorkedHoursRepo;
+import com.example.demo.DTO.Card;
+import com.example.demo.DTO.Department;
+import com.example.demo.DTO.Employee;
+import com.example.demo.DTO.Mentoring;
+import com.example.demo.DTO.MonthlyExpectedWorkingHours;
+import com.example.demo.DTO.Position;
+import com.example.demo.DTO.Schedule;
+import com.example.demo.DTO.WorkedHours;
+import com.example.demo.repositories.CardRepo;
+import com.example.demo.repositories.DepartmentRepo;
+import com.example.demo.repositories.EmployeeRepo;
+import com.example.demo.repositories.ExpectedHoursRepo;
+import com.example.demo.repositories.MentoringRepo;
+import com.example.demo.repositories.PositionRepo;
+import com.example.demo.repositories.ScheduleRepo;
+import com.example.demo.repositories.WorkedHoursRepo;
+import com.example.demo.services.interfaces.EmployeeService;
 
 @RestController
 public class MainController {
@@ -29,7 +30,7 @@ public class MainController {
     @Autowired
     private DepartmentRepo departmentRepo;
     @Autowired
-    private EmployeeRepo employeeRepo;
+    private EmployeeService employeeService;
     @Autowired
     private ExpectedHoursRepo expectedHoursRepo;
     @Autowired
@@ -68,7 +69,8 @@ public class MainController {
 
         employee.setScheduledList(schedule);
 
-        employeeRepo.save(employee);
+        employeeService.createEmployee(employee);
+        // employeeRepo.save(employee);
         return "done";
     }
 
