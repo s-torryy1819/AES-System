@@ -25,6 +25,8 @@ public class EmployeeRepoTest {
         // Act
         Integer actualId = repository.findById(employee.getEmployeeId()).get().getEmployeeId();
 
+        repository.delete(employee);
+
         // Assert
         assertEquals(expectedId, actualId);
     }

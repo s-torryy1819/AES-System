@@ -18,18 +18,21 @@ public class CardRepoTest {
     private CardRepo cardRepo;
 
     @Test
-    public void GetCardId_Card_CalledGetCardIdToCheckCardtData() {
+    public void FindCardById_Card_CalledFindCardByIdToCheckCardtData() {
         // Arrange
         Employee employee = new Employee("Anna", "Willington", null, null, null, null, null, null);
         Card card = new Card(false, null);
         employee.setCard(card);
 
-        // Act
         employeeRepo.save(employee);
         cardRepo.save(card);
-
         Integer expectedCardId = employee.getCard().getCardId();
+
+        // Act
         Integer actualCardId = cardRepo.findById(card.getCardId()).get().getCardId();
+
+        employeeRepo.delete(employee);
+        cardRepo.delete(card);
 
         // Assert
         assertEquals(expectedCardId, actualCardId);

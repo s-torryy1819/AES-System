@@ -18,18 +18,22 @@ public class PositionRepoTest {
     private PositionRepo positionRepo;
 
     @Test
-    public void GetPositionId_Position_CalledGetPositionIdToCheckPositionData() {
+    public void FindPositionById_Position_CalledGetPositionIdToCheckPositionData() {
         // Arrange
         Employee employee = new Employee("Anna", "Willington", null, null, null, null, null, null);
         Position position = new Position("SEO");
         employee.setPosition(position);
 
-        // Act
         employeeRepo.save(employee);
         positionRepo.save(position);
 
         Integer expectedPositionId = employee.getPosition().getPositionId();
+
+        // Act
         Integer actualPositionId = positionRepo.findById(employee.getPosition().getPositionId()).get().getPositionId();
+
+        employeeRepo.delete(employee);
+        positionRepo.delete(position);
 
         // Assert
         assertEquals(expectedPositionId, actualPositionId);

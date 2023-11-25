@@ -24,7 +24,7 @@ public class ScheduleRepoTest {
     private WorkedHoursRepo workedHoursRepo;
 
     @Test
-    public void GetHours_Schedule_CalledGetHoursToCheckScheduleData() {
+    public void FindHours_Schedule_CalledGetHoursToCheckScheduleData() {
         // Arrange
         Employee employee = new Employee("Anna", "Willington", null, null, null, null, null, null);
         MonthlyExpectedWorkingHours expectedHours = new MonthlyExpectedWorkingHours("Jan", 160, null);
@@ -33,17 +33,26 @@ public class ScheduleRepoTest {
 
         workedHours.setSchedule(schedule);
         expectedHours.setSchedule(schedule);
+        employee.setScheduledList(schedule);
 
         Integer expectedWorkingHours = schedule.getExpectedWorkingHours().getHours();
-        Integer actualWorkingHours = schedule.getActualWorkingHours().getNumOfHours();
 
-        // Act
         employeeRepo.save(employee);
         scheduleRepo.save(schedule);
         expectedHoursRepo.save(expectedHours);
         workedHoursRepo.save(workedHours);
 
+        // Act
+
+        Integer actualHours = scheduleRepo.findById(schedule.getScheduleId()).get().getExpectedWorkingHours()
+                .getHours();
+
+        employeeRepo.delete(employee);
+        scheduleRepo.delete(schedule);
+        expectedHoursRepo.delete(expectedHours);
+        workedHoursRepo.delete(workedHours);
+
         // Assert
-        assertEquals(expectedWorkingHours, actualWorkingHours);
+        assertEquals(expectedWorkingHours, actualHours);
     }
 }

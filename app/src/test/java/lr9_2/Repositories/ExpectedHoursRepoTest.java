@@ -24,7 +24,7 @@ public class ExpectedHoursRepoTest {
     private WorkedHoursRepo workedHoursRepo;
 
     @Test
-    public void GetHoursId_ExpectedWorkedHours_CalledGetWorkedHoursIdToCheckSavingObject() {
+    public void FindHoursById_ExpectedWorkedHours_CalledGetWorkedHoursIdToCheckSavingObject() {
         // Arrange
         Employee employee = new Employee("Anna", "Willington", null, null, null, null, null, null);
         MonthlyExpectedWorkingHours expectedHours = new MonthlyExpectedWorkingHours("Jan", 160, null);
@@ -34,16 +34,23 @@ public class ExpectedHoursRepoTest {
         workedHours.setSchedule(schedule);
         expectedHours.setSchedule(schedule);
 
-        // Act
         employeeRepo.save(employee);
         scheduleRepo.save(schedule);
         expectedHoursRepo.save(expectedHours);
         workedHoursRepo.save(workedHours);
 
         Integer expectedHoursId = expectedHours.getMonthlyExpectedWorkingHoursId();
+
+        // Act
+
         Integer actualHoursId = expectedHoursRepo
                 .findById(schedule.getExpectedWorkingHours().getMonthlyExpectedWorkingHoursId()).get()
                 .getMonthlyExpectedWorkingHoursId();
+
+        employeeRepo.delete(employee);
+        scheduleRepo.delete(schedule);
+        expectedHoursRepo.delete(expectedHours);
+        workedHoursRepo.delete(workedHours);
 
         // Assert
         assertEquals(expectedHoursId, actualHoursId);

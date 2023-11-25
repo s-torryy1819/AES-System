@@ -31,19 +31,27 @@ public class WorkedHoursRepoTest {
         WorkedHours workedHours = new WorkedHours(160, null);
         Schedule schedule = new Schedule(expectedHours, workedHours, employee);
 
+        employee.setScheduledList(schedule);
         workedHours.setSchedule(schedule);
         expectedHours.setSchedule(schedule);
 
-        Integer expectedWorkedHoursId = workedHours.getWorkedHoursId();
-        Integer actualWorkedHoursId = schedule.getActualWorkingHours().getWorkedHoursId();
-
-        // Act
         employeeRepo.save(employee);
         scheduleRepo.save(schedule);
         expectedHoursRepo.save(expectedHours);
         workedHoursRepo.save(workedHours);
 
+        Integer expectedWorkedHoursId = workedHours.getWorkedHoursId();
+
+        // Act
+
+        Integer actualHoursId = workedHoursRepo.findById(schedule.getScheduleId()).get().getWorkedHoursId();
+
+        employeeRepo.delete(employee);
+        scheduleRepo.delete(schedule);
+        expectedHoursRepo.delete(expectedHours);
+        workedHoursRepo.delete(workedHours);
+
         // Assert
-        assertEquals(expectedWorkedHoursId, actualWorkedHoursId);
+        assertEquals(expectedWorkedHoursId, actualHoursId);
     }
 }
